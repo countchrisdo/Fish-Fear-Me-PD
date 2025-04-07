@@ -19,15 +19,46 @@ function Player:init(x,y, gameManager)
         self:playAnimation()
 
         self:moveTo(x, y)
+        self.moveSpeed = 1
+        self.projectileSpeed = 1
         self:setZIndex(Z_INDEXES.PLAYER)
         self:setTag(TAGS.PLAYER)
         self:setCollideRect(3, 3, 10, 13) -- Standard Playdate SDK collision method
 end
 
+function Player:shoot()
+        -- function is not finished
+    -- shoot() method: shoots a bullet
+    -- ARGS: none
+    local projectileInstance = Projectile(x, y-10, self.projectileSpeed)
+    projectileInstance:add()
+
+end
+
+function Player:fish()
+    -- function is not finished
+    -- fish() method: fishes
+    -- ARGS: none
+    -- Calls the fish method of the game manager
+    self.gameManager:fish()
+end
+
+function Player:move()
+    -- move() method: moves the player
+    -- ARGS: none
+    -- Movement
+    if pd.buttonIsPressed(pd.kButtonLeft) then
+        self:moveBy(-self.moveSpeed, 0)
+    elseif pd.buttonIsPressed(pd.kButtonRight) then
+        self:moveBy(self.moveSpeed, 0)
+    end
+    
+end
+
 function Player:update()
     -- update() method: updates the player sprite
     -- ARGS: none
-        -- Calls the update method of the parent class (AnimatedSprite)
-        self:updateAnimation()
-
+    -- Calls the update method of the parent class (AnimatedSprite)
+    self:updateAnimation()
+    self:move()
 end
