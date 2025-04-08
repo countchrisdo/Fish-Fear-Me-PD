@@ -22,8 +22,8 @@ function GameScene:init()
     self.spawnY = 5 * 16
     -- (12, 5) are grid coordinates. 16 is the tile sizes to get the pixel coordinates.
     self.player = Player(self.spawnX, self.spawnY, self)
+    self.hud = Hud(0, 0)
     -- self.camera = nil
     self.enemies = {}
     self.gameOver = false
-
 end

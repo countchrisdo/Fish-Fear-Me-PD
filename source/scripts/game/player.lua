@@ -10,8 +10,7 @@ function Player:init(x,y, gameManager)
     -- ARGS: x, y are the pixel coordinates of the player / gameManager is the game manager object
         -- Storing Game manager as property
         self.gameManager = gameManager
-        local playerImageTable = gfx.imagetable.new("images/gup-table-16-16")
-        -- local playerImageTable = gfx.imagetable.new("images/gup-table-16-16")
+        local playerImageTable = gfx.imagetable.new("images/gup32-table-32-32")
         Player.super.init(self, playerImageTable) -- super.init calls init method of parent class (AnimatedSprite)
 
         self:addState("idle", 1, 1)
@@ -19,7 +18,7 @@ function Player:init(x,y, gameManager)
         self:playAnimation()
 
         self:moveTo(x, y)
-        self.moveSpeed = 1
+        self.moveSpeed = 2
         self.projectileSpeed = 1
         self:setZIndex(Z_INDEXES.PLAYER)
         self:setTag(TAGS.PLAYER)
@@ -51,8 +50,11 @@ function Player:move()
         self:moveBy(-self.moveSpeed, 0)
     elseif pd.buttonIsPressed(pd.kButtonRight) then
         self:moveBy(self.moveSpeed, 0)
+    elseif pd.buttonIsPressed(pd.kButtonUp) then
+        self:moveBy(0, -self.moveSpeed)
+    elseif pd.buttonIsPressed(pd.kButtonDown) then
+        self:moveBy(0, self.moveSpeed)
     end
-    
 end
 
 function Player:update()

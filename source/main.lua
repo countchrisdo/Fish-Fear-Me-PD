@@ -4,6 +4,8 @@ import "CoreLibs/ui"
 import "CoreLibs/object"
 import "CoreLibs/timer"
 import "CoreLibs/animation"
+import "CoreLibs/sprites"
+import "CoreLibs/crank"
 
 -- Importing libraries
 import "scripts/libraries/AnimatedSprite.lua"
@@ -12,6 +14,7 @@ import "scripts/libraries/LDtk.lua"
 -- Importing scripts
 import "scripts/game/gameScene"
 import "scripts/game/player"
+import "scripts/game/hud"
 
 -- Init game
 GameScene()
